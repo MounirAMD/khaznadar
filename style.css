@@ -1,0 +1,162 @@
+body {
+    padding: 10px;
+    padding-top: 90px;
+    display: flex;
+    background-color: #EBEDF0;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    justify-content: center;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.card {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 7px;
+    border: 0.5px solid black;
+    margin-bottom: 10px;
+    width: 35%; /* Take full width of the container */
+    box-sizing: border-box;
+}
+
+.imgg {
+    margin: 5px;
+    border-radius: 7px;
+    max-width: 100%;
+}
+
+.circle {
+    margin-bottom: -5px;
+}
+
+.img1 {
+    margin-left: 9px;
+}
+
+label {
+    font-weight: 400;
+    margin-left: 8px;
+}
+
+#share {
+    float: right;
+}
+
+.img1 {
+    border-radius: 50%;
+    border: 0.5px solid black;
+}
+
+.img-prof {
+    border-radius: 7px;
+    border: 0.5px solid black;
+    padding: 8px;
+}
+
+p {
+    font-weight: 370;
+    margin-top: 10px;
+}
+
+.tete {
+    margin-bottom: 59px;
+}
+
+h3 {
+    color: rgb(255, 105, 105);
+    margin-bottom: -20px;
+    margin-top: -3px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+
+    .img-prof {
+        text-align: center;
+    }
+}
+
+
+@media (min-width: 768px) {
+    /* Styles for tablets and larger screens */
+    .card {
+        width: 80%;
+    }
+
+    .img-prof {
+        text-align: center;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+      }
+      
+  }
+
+  @media screen and (max-width: 280px)  {
+    /* Styles for the Galaxy Fold */
+    .card {
+        width: 105%;
+    }
+
+    .img-prof {
+        text-align: center;
+    }
+    .lfog{
+        margin-top: -55px;
+        margin-right: 45px;
+    }
+    .lota{
+        margin-top: -40px;
+        margin-right: 45px;
+    }
+    .imgemp{
+        width: 200px;
+        height: 130px;
+    }
+    
+  }
+
+  @media screen and (max-width: 360px) and (max-height: 740px) {
+    /* Styles for the Galaxy S8+ */
+    .card {
+        width: 105%;
+    }
+
+    .img-prof {
+        text-align: center;
+    }
+    .lfog{
+        margin-top: -55px;
+        margin-right: 45px;
+    }
+  } 
+
+
+
+
+  .wrapper {
+    height: 220px;
+    width: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid #fff;
+    margin-bottom: 10px;
+    margin-top: -70px;
+}
+
+.wrapper img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  filter: grayscale(70%);
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.wrapper img:hover {
+  transform: scale(1.3);
+  filter: grayscale(0%);
+}

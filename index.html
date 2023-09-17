@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== REMIXICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@200;300;500&display=swap" rel="stylesheet">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="style.css">
+        
+        <style>
+                    /* Add some basic CSS styles for the search bar and results */
+                #search-bar {
+                    margin-bottom: 10px;
+                    width: 70%;
+                    padding: 10px;
+                    border: 0.2px solid #000000;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    outline: none;
+                    transition: border 0.5s;
+                }
+                #search-bar:focus{
+                    border: 2px solid #007BFF; /* Change to your desired focus color */
+                    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow on focus */
+                }
+
+                .searchable-div {
+                    background-color: #ffffff;
+                    border-radius: 10px;
+                    display: none;
+                    margin: 10px;
+                    padding: 10px;
+                    border: 0.5px solid #ccc;
+                }
+                .card2{
+                    background-color: white;
+                    padding: 10px;
+                    margin: 10px;
+                    border-radius: 8px;
+                    border: 0.5px solid black;
+                }
+
+
+        </style>
+
+            <!-- Include Firebase JavaScript SDK from the CDN -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database-compat.js"></script>
+
+        <title>Hello world !</title>
+    </head>
+    <body>
+        <div>
+            <div class="wrapper">
+                <img src="khaznalog.jpg" />
+              </div>
+        </div>
+        <!--=============== NAVBAR ===============-->
+        <nav class="nav">
+            <ul class="nav__list">
+                <a href="#home" class="nav__link active-link">
+                    <i class="ri-home-5-line"></i>
+                    <span class="nav__name">
+                        Accueil
+                    </span>
+                </a>
+
+                <a href="#profile" class="nav__link">
+                    <i class="ri-user-line"></i>
+                    <span class="nav__name">
+                        Les Emplois
+                    </span>
+                </a>
+
+                <a href="#message" class="nav__link">
+                    <i class="ri-chat-3-line"></i>
+                    <span class="nav__name">
+                        Les Livres
+                    </span>
+                </a>
+
+                <a href="#mail" class="nav__link">
+                    <i class="ri-mail-open-line"></i>
+                    <span class="nav__name">
+                        Des Exercices
+                    </span>
+                </a>
+
+                <a href="#settings" class="nav__link">
+                    <i class="ri-settings-line"></i>
+                    <span class="nav__name">
+                        About US
+                    </span>
+                </a>
+
+                <svg class="indicator" width="94" height="56" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="47" cy="28" rx="24" ry="28"/>
+                    <path d="M24 20C24 20 28 55.9999 48 56L0 55.9997C18 55.9998 24 20 24 20Z"/>
+                    <path d="M70 20C70 20 66 55.9999 46 56L94 55.9997C76 55.9998 70 20 70 20Z"/>
+                </svg>
+            </ul>
+        </nav>
+
+        <!--=============== MAIN ===============-->
+        <main class="container">
+            <section  id="home">
+                <center>
+
+                <h2>Accueil</h2>
+
+
+                <div style="text-align: right;" dir="rtl"  class="card">
+                    <div class="tete">
+                            <div id="share" class="circle"> <img class="img1" width="40px" height="40px" src="khaznalog.jpg" alt=""></div>
+                            <label class="lfog"  id="share" for="">الموقع الرسمي لمعهد الشادلي خزندار</label>
+                    </div>
+            
+                    <div dir="rtl" class="img-prof">
+                                <div id="share" class="circle"> <img class="img1" width="40px" height="40px" src="siChaihir.jpg" alt=""></div>
+                                <label class="lota" id="share" for=""><a style="font-weight: 700; color: rgb(126, 227, 126);"> السيد :  </a> شهير </label>
+                                <img src="Pub.png" class="imgg" width="450px"  alt="">
+                    </div>
+            
+                    <div  class="pub">
+                        <h3>أهلًا وسهلًا</h3>
+                        <p>مرحبا بكم في الموقع الرسمي لشاذلي خزندار</p><!-- يعلن المعهد بداية من اليوم الثلثاء 22 أوت عطلة للجميع !! -->
+                    </div>
+                </div>
+                    
+                </center>
+
+            </section>
+
+            <section id="profile">
+                <h2>Les Emplois</h2>
+                <center><input type="text" id="search-bar" placeholder="Search for titles..."></center>
+    
+                <!-- Sample divs with titles -->
+                <div class="searchable-div">
+                    <h2>1ere 1</h2>
+                    <center>
+                        <img class="imgemp" src="Pub.png" style="border-radius: 10px; border: 2px solid black;" width="300" height="170" alt="">
+                    </center>
+                </div>
+                
+                <div class="searchable-div">
+                    <h2>bac info</h2>
+                    <p>Content for Div 2</p>
+                </div>
+                
+                <div class="searchable-div">
+                    <h2>Div 3 Title</h2>
+                    <p>Content for Div 3</p>
+                </div>
+            </section>
+
+            <section id="message">
+                <h2>Les Livres</h2>
+                <div dir="rtl" class="card-container" id="data-list"></div>
+            </section>
+
+            <section id="mail">
+                <h2>Des Exercices</h2>
+            </section>
+
+            <section id="settings">
+                <h2>About US</h2>
+            </section>
+        </main>
+
+        <script>
+            // JavaScript to filter divs based on user input search bar 
+            const searchBar = document.getElementById('search-bar');
+            const divs = document.querySelectorAll('.searchable-div');
+    
+            searchBar.addEventListener('input', function () {
+                const searchTerm = searchBar.value.toLowerCase();
+    
+                divs.forEach(div => {
+                    const h2 = div.querySelector('h2');
+                    const title = h2.textContent.toLowerCase();
+    
+                    if (title.includes(searchTerm) || searchTerm === "") {
+                        div.style.display = 'block';
+                    } else {
+                        div.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+
+
+
+
+
+
+<script>
+    var firebaseConfig = {
+            apiKey: "AIzaSyCBwWBVOj9RA2FJQ9-6CtvGgwq13T7qRow",
+            authDomain: "hello-a542c.firebaseapp.com",
+            databaseURL: "https://hello-a542c-default-rtdb.firebaseio.com",
+            projectId: "hello-a542c",
+            storageBucket: "hello-a542c.appspot.com",
+            messagingSenderId: "920422644124",
+            appId: "1:920422644124:web:77189812f2b93437147059",
+            measurementId: "G-RH74J0YTY3"
+    };
+
+    // Initialize Firebase
+    var firebaseApp = firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+
+    // Reference to your data node
+    var dataRef = database.ref("your_data_node"); // Replace with your data node
+
+    // Function to display data
+    function displayData(snapshot) {
+        var dataList = document.getElementById("data-list");
+        var data = snapshot.val();
+        
+        // Create a card element
+        var card = document.createElement("div");
+        card.classList.add("card2");
+
+        // Create card content
+        var cardContent = document.createElement("div");
+        cardContent.classList.add("card-content");
+        cardContent.innerHTML = `
+            <p><strong>اسم الكتاب :</strong> ${data.bookName}</p>
+            <p><strong>Class Name:</strong> ${data.className}</p>
+            <p><strong>رقم الهاتف :</strong> ${data.phoneNumber}</p>
+        `;
+
+        // Append card content to the card
+        card.appendChild(cardContent);
+
+        // Append the card to the card container
+        dataList.appendChild(card);
+    }
+
+    // Fetch data from Firebase and display it
+    dataRef.once("value").then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            displayData(childSnapshot);
+        });
+    });
+</script>
+
+
+        <!--=============== MAIN JS ===============-->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
