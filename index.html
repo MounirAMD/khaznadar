@@ -16,7 +16,7 @@
         
         <style>
                     /* Add some basic CSS styles for the search bar and results */
-                #search-bar {
+                #search-bar , #search-input{
                     margin-bottom: 10px;
                     width: 70%;
                     padding: 10px;
@@ -54,7 +54,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database-compat.js"></script>
 
-        <title>Page | Chadli Khaznadar</title>
+        <title>Hello world !</title>
     </head>
     <body>
         <div>
@@ -140,7 +140,7 @@
 
             <section id="profile">
                 <h2>Les Emplois</h2>
-                <center><input type="text" id="search-bar" placeholder="Search for titles..."></center>
+                <center><input dir="rtl" type="text" id="search-bar" placeholder="أكتب إسم الكتاب أو المستوى التعليمي ....."></center>
     
                 <!-- Sample divs with titles -->
                 <div class="searchable-div">
@@ -163,6 +163,7 @@
 
             <section id="message">
                 <h2>Les Livres</h2>
+                <center><input dir="rtl" type="text" id="search-input" placeholder="أكتب إسم الكتاب أو المستوى التعليمي ....."></center>
                 <div dir="rtl" class="card-container" id="data-list"></div>
             </section>
 
@@ -235,8 +236,8 @@
         cardContent.classList.add("card-content");
         cardContent.innerHTML = `
             <p><strong>اسم الكتاب :</strong> ${data.bookName}</p>
-            <p><strong>Class Name:</strong> ${data.className}</p>
-            <p><strong>رقم الهاتف :</strong> ${data.phoneNumber}</p>
+            <p class="classeName"><strong>القسم :</strong> ${data.className}</p>
+            <p><strong>رقم الهاتف أو المكان :</strong> ${data.phoneNumber}</p>
         `;
 
         // Append card content to the card
@@ -253,6 +254,44 @@
         });
     });
 </script>
+
+
+
+<script>
+    // Function to filter and display data
+function filterAndDisplayData(searchTerm) {
+    var dataList = document.getElementById("data-list");
+    var cards = dataList.querySelectorAll(".card2");
+
+    cards.forEach(function (card) {
+        var cardContent = card.querySelector(".card-content");
+        var cardText = cardContent.textContent.toLowerCase();
+        
+        if (cardText.includes(searchTerm.toLowerCase())) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+// Add an input event listener to the search input
+var searchInput = document.getElementById("search-input");
+
+searchInput.addEventListener("input", function () {
+    var searchTerm = searchInput.value;
+    filterAndDisplayData(searchTerm);
+});
+
+// Initial display of all data
+dataRef.once("value").then(function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+        displayData(childSnapshot);
+    });
+});
+
+</script>
+
 
 
         <!--=============== MAIN JS ===============-->
