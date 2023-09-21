@@ -1,7 +1,6 @@
 <!DOCTYPE html>
     <html lang="en">
     <head>
-        <link rel="icon" type="image/x-icon" href="khaznalog.jpg">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -141,7 +140,7 @@
 
             <section id="profile">
                 <h2>Les Emplois</h2>
-                <center><input dir="rtl" type="text" id="search-bar" placeholder="إسم القسم الذي تدرس فيه ...."></center>
+                <center><input dir="rtl" type="text" id="search-bar" placeholder="أكتب إسم الكتاب أو المستوى التعليمي ....."></center>
     
                 <!-- Sample divs with titles -->
                 <div class="searchable-div">
@@ -216,44 +215,44 @@
             measurementId: "G-RH74J0YTY3"
     };
 
-    // Initialize Firebase
-    var firebaseApp = firebase.initializeApp(firebaseConfig);
-    var database = firebase.database();
+    firebase.initializeApp(firebaseConfig);
+        var database = firebase.database();
+        var dataRefLivres = database.ref("your_data_node"); // Replace with your data node for Livres
 
-    // Reference to your data node
-    var dataRef = database.ref("your_data_node"); // Replace with your data node
+        // Function to display data
+        function displayData(snapshot) {
+            var dataList = document.getElementById("data-list");
+            var data = snapshot.val();
 
-    // Function to display data
-    function displayData(snapshot) {
-        var dataList = document.getElementById("data-list");
-        var data = snapshot.val();
-        
-        // Create a card element
-        var card = document.createElement("div");
-        card.classList.add("card2");
+            // Create a card element
+            var card = document.createElement("div");
+            card.classList.add("card2");
 
-        // Create card content
-        var cardContent = document.createElement("div");
-        cardContent.classList.add("card-content");
-        cardContent.innerHTML = `
-            <p><strong>اسم الكتاب :</strong> ${data.bookName}</p>
-            <p class="classeName"><strong>القسم :</strong> ${data.className}</p>
-            <p><strong>رقم الهاتف أو المكان :</strong> ${data.phoneNumber}</p>
-        `;
+            // Create card content
+            var cardContent = document.createElement("div");
+            cardContent.classList.add("card-content");
+            cardContent.innerHTML = `
+                <p><strong>اسم الكتاب :</strong> <strong style="color:rgb(73, 199, 113)"> ${data.bookName} </strong> </p>
+                <p class="classeName"><strong>القسم :</strong> <strong style="color:rgb(73, 199, 113)"> ${data.className} </strong> </p>
+                <p><strong>رقم الهاتف أو المكان :</strong> <strong style="color:red"> ${data.phoneNumber} </strong> </p>
+            `;
 
-        // Append card content to the card
-        card.appendChild(cardContent);
+            // Append card content to the card
+            card.appendChild(cardContent);
 
-        // Append the card to the card container
-        dataList.appendChild(card);
-    }
+            // Append the card to the card container
+            dataList.appendChild(card);
+        }
 
-    // Fetch data from Firebase and display it
-    dataRef.once("value").then(function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            displayData(childSnapshot);
+        // Fetch data from Firebase and display it for the "Les Livres" section
+        dataRefLivres.once("value").then(function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+                displayData(childSnapshot);
+            });
         });
-    });
+        
+        // ... Your search input event listener and other scripts ...
+    </script>
 </script>
 
 
